@@ -188,7 +188,7 @@ class Simulador:
         vector_estado["cola_maxima"] = self.cola_maxima
 
         for trabajo in self.trabajos:
-            vector_estado["trabajos"][trabajo.id] = trabajo.__deepcopy__()
+            vector_estado["trabajos"][trabajo.id] = trabajo.trabajo_dict()
 
         return vector_estado
 

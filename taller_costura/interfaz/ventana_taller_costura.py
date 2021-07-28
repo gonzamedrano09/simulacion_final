@@ -853,9 +853,9 @@ class VentanaTallerCostura(QMainWindow):
                 for id_trabajo in ids_trabajos:
                     trabajo = iteracion_a_mostrar.get("trabajos").get(id_trabajo)
                     if trabajo:
-                        estado_str = trabajo.estado
-                        if trabajo.empleado is not None:
-                            estado_str += " (" + str(trabajo.empleado.id) + ")"
+                        estado_str = trabajo.get("estado")
+                        if trabajo.get("id_empleado") is not None:
+                            estado_str += " (" + str(trabajo.get("id_empleado")) + ")"
                         self.grid_iteraciones_simuladas.setItem(index_f, index_c, QTableWidgetItem(estado_str))
                         index_c += 1
 
