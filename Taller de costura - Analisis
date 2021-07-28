@@ -1,0 +1,101 @@
+*) Cáculos auxiliares
+
+- Media de llegada de trabajos:
+    lambda = 24/60 = 0,4
+    media = 1/0,4 = 2,5'
+
+
+*) Eventos 
+
+- llegada_trabajo	ExpNegativa(2,5')   X = -2,5 * LN (1 - RND)
+- fin_zurcido		ExpNegativa(4')     X = -4 * LN (1 - RND)
+- fin_costura		ExpNegativa(12')    X = -12 * LN (1 - RND)
+- fin_planchado     ExpNegativa(6')     X = -6 * LN (1 - RND)
+- fin_inspeccion	ExpNegativa(3')     X = -3 * LN (1 - RND)
+
+
+*) Objetos
+
+- trabajo (Temporal)        siendo zurcido (SZ)
+                        	esperando zurcido (EZ)
+                        	siendo cosido (SC)
+                        	esperando cosido (SC)
+                        	siendo planchado (SP)
+                        	esperando planchado (EP)
+                        	siendo inspeccionado (SI)
+                        	esperando inspección (EI)
+				
+- empleado (Permanente)	    libre (L)
+                            ocupado (O)
+
+- inspector (Permanente)	libre (L)
+                            ocupado (O)
+
+
+*) Vector estado
+
+- Evento
+- Reloj (minutos)
+
+- RND (llegada_trabajo)
+- Tiempo proxima llegada (llegada_trabajo)
+- Proxima llegada (llegada_trabajo)
+
+- RND (fin_zurcido)
+- Tiempo zurcido (fin_zurcido)
+- Fin zurcido (fin_zurcido)                                     Alternativa 1 (X 10 inicialmente)/Alternativa 2 (X 2 inicialmente)
+
+- RND (fin_costura)
+- Tiempo costura (fin_costura)
+- Fin costura (fin_costura)                                     Alternativa 1 (X 10 inicialmente)/Alternativa 2 (X 5 inicialmente)
+
+- RND (fin_planchado)
+- Tiempo planchado (fin_planchado)
+- Fin planchado (fin_planchado)                                 Alternativa 1 (X 10 inicialmente)/Alternativa 2 (X 3 inicialmente)
+
+- RND (fin_inspeccion)
+- Tiempo inspeccionando (fin_inspeccion)
+- Fin inspección (fin_inspeccion)                               Ambas alternativas (X 2 inicialmente)
+
+- RND (trabajo_rechazado)
+- Trabajo rechazado (trabajo_rechazado)
+
+- Estado (empleado) (servidor)                                  Ambas alternativas (X 10 inicialmente)
+- Cola (empleado) (servidor)                                    Ambas alternativas (X 4)
+
+- Estado (inspector) (servidor)                                 Ambas alternativas (X 2 inicialmente)
+- Cola (inspector) (servidor)                                   Ambas alternativas (X 1)
+
+- Trabajos terminados
+- Trabajos terminados promedio por hora
+- Cantidad máxima en cola de trabajos
+- Actividad donde existe la cola máxima
+
+- Estado (trabajo) (cliente)                                    Ambas alternativas (X N)
+- Hora de inicio de espera para zurcido (trabajo) (cliente)     Ambas alternativas (X N)
+- Hora de inicio de espera para costura (trabajo) (cliente)     Ambas alternativas (X N)
+- Hora de inicio de espera para planchado (trabajo) (cliente)   Ambas alternativas (X N)
+- Hora de inicio de espera para inspección (trabajo) (cliente)  Ambas alternativas (X N)
+
+
+*) Parámetros de la interfaz
+
+- Parametros generales          Tiempo a simular
+                                Ver desde tiempo
+                                Cantidad de iteraciones a ver
+
+- Tiempos medios                Llegada de trabajo
+                                Tiempo medio de zurcido
+                                Tiempo medio de costura
+                                Tiempo medio de planchado
+                                Tiempo medio de inspeccionado
+
+- Servidores (Alternativa 1)    Empleados
+                                Inspectores
+
+- Servidores (Alternativa 2)    Empleados para zurcido
+                                Empleados para costura
+                                Empleados para planchado
+                                Inspectores
+
+- Trabajos rechazados           Porcentaje
