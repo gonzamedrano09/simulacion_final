@@ -144,7 +144,6 @@ class Simulador:
             vector_estado["fines_inspeccion"][empleado.id] = None
             vector_estado["estado_inspectores"][empleado.id] = empleado.estado
 
-        # TODO: Mejorar
         for evento_anterior in self.manejador_eventos.eventos:
             if evento_anterior.tipo == Evento.TIPO_LLEGADA_TRABAJO:
                 vector_estado["proxima_llegada"] = evento_anterior.tiempo_fin
@@ -188,9 +187,8 @@ class Simulador:
         vector_estado["cantidad_cola_maxima"] = self.cantidad_cola_maxima
         vector_estado["cola_maxima"] = self.cola_maxima
 
-        # TODO: Mejorar
         for trabajo in self.trabajos:
-            vector_estado["trabajos"][trabajo.id] = copy.deepcopy(trabajo)
+            vector_estado["trabajos"][trabajo.id] = trabajo.__deepcopy__()
 
         return vector_estado
 

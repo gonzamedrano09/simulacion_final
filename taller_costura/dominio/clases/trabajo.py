@@ -71,6 +71,11 @@ class Trabajo:
     def __le__(self, other):
         return True if self.id <= other.id else False
 
+    def __deepcopy__(self, memodict={}):
+        return Trabajo(self.id, self.estado, self.empleado, self.hora_inicio_espera_zurcido,
+                       self.hora_inicio_espera_costura, self.hora_inicio_espera_planchado,
+                       self.hora_inicio_espera_inspeccion)
+
     def __str__(self):
         return "Trabajo(id={id}, estado={estado}, empleado={empleado}, " \
                "hora_inicio_espera_zurcido={hora_inicio_espera_zurcido}, " \
